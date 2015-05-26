@@ -1,0 +1,28 @@
+{
+  "name": "steep",
+  "version": "0.0.1",
+  "description": "Tea timer from your CLI",
+  "main": "index.js",
+  "bin": {
+    "steep": "bin/steep"
+  },
+  "dependencies": {
+    "commander": "^2.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/mfpierre/steep"
+  },
+  "keywords": [
+    "steep",
+    "tea",
+    "timer",
+    "cli"
+  ],
+  "author": "Pierre Margueritte",
+  "license": "MIT"
+}
