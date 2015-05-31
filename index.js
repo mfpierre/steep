@@ -4,8 +4,10 @@
  * Module dependencies.
  */
 
-var program  = require('commander');
-var teaTimes = {
+var program     = require('commander');
+var notifier    = require('node-notifier');
+var ProgressBar = require('progress');
+var teaTimes    = {
   'black': 180,
   'green': 120,
   'herbal': 240,
@@ -36,4 +38,15 @@ function getTimeForType(type)
 var duration = getTimeForType(program.tea);
 if(program.strong) duration *= 1.2;
 if(program.light) duration *= 0.8;
+var bar = new ProgressBar(':bar :eta', { total: duration });
+var timer = setInterval(function () {
+  bar.tick();
+  if (bar.complete) {
+    notifier.notify({
+      title: 'Steep',
+      message: 'Your tea is ready!'
+    });
+    clearInterval(timer);
+  }
+}, 1000);
 console.log('Brewing a %s tea for %s seconds', program.tea, duration);
