@@ -7,6 +7,7 @@
 var program     = require('commander');
 var notifier    = require('node-notifier');
 var ProgressBar = require('progress');
+var path        = require('path');
 var teaTimes    = {
   'black': 180,
   'green': 120,
@@ -38,13 +39,20 @@ function getTimeForType(type)
 var duration = getTimeForType(program.tea);
 if(program.strong) duration *= 1.2;
 if(program.light) duration *= 0.8;
-var bar = new ProgressBar(':bar :eta', { total: duration });
+var bar = new ProgressBar('[:bar] :percent', {
+  complete: '=',
+  incomplete: ' ',
+  total: duration,
+  width: 20
+});
 var timer = setInterval(function () {
   bar.tick();
   if (bar.complete) {
     notifier.notify({
       title: 'Steep',
-      message: 'Your tea is ready!'
+      message: 'Your tea is ready!',
+      icon: path.join(__dirname, '../resources/icon.png'),
+      sound: 'Blow'
     });
     clearInterval(timer);
   }
