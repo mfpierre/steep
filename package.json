@@ -1,6 +1,6 @@
 {
   "name": "steep",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tea timer from your CLI",
   "main": "index.js",
   "bin": {
