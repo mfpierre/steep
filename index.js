@@ -21,7 +21,7 @@ var teaTimes    = {
 };
 
 program
-  .version('0.0.1')
+  .version('0.0.2')
   .option('-t, --tea [type]', 'Steep the specified type of tea [type]', 'black')
   .option('-s, --strong', '20% additional steep time')
   .option('-l, --light', '20% less steep time')
